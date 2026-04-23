@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI-Assisted Physical Activity Planning — Study Sign-Up</title>
+  <meta name="description" content="Participant information and sign-up page for the AI-Assisted Physical Activity Planning study at the Ludwig Boltzmann Institute for Digital Health and Prevention." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --clr-bg: #fafaf8;
+      --clr-surface: #ffffff;
+      --clr-accent: #2563eb;
+      --clr-accent-soft: #eff4ff;
+      --clr-accent-dark: #1e40af;
+      --clr-text: #1a1a1a;
+      --clr-muted: #6b7280;
+      --clr-border: #e5e7eb;
+      --clr-highlight: #f0fdf4;
+      --clr-highlight-border: #bbf7d0;
+      --clr-warm: #fef9f0;
+      --clr-warm-border: #fde68a;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --max-w: 760px;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--clr-text);
+      background: var(--clr-bg);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(160deg, #1e3a5f 0%, #2563eb 60%, #3b82f6 100%);
+      color: #fff;
+      padding: 80px 24px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 28px;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 540px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: #fff;
+      color: var(--clr-accent);
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 15px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    /* ── Nav (sticky) ── */
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,250,248,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--clr-border);
+      padding: 0 24px;
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-inner a {
+      color: var(--clr-muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 14px 14px;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav-inner a:hover,
+    .nav-inner a:focus {
+      color: var(--clr-accent);
+      border-bottom-color: var(--clr-accent);
+    }
+
+    /* ── Sections ── */
+    .section {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--clr-border);
+    }
+
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+      color: var(--clr-text);
+    }
+
+    .section .lead {
+      color: var(--clr-muted);
+      font-size: 1.02rem;
+      margin-bottom: 28px;
+    }
+
+    .section p {
+      margin-bottom: 16px;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--clr-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    /* ── Highlight card (takeaway) ── */
+    .highlight-card {
+      background: var(--clr-highlight);
+      border: 1px solid var(--clr-highlight-border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+    }
+
+    .highlight-card strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .highlight-card p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* ── Warm card (compensation) ── */
+    .warm-card {
+      background: var(--clr-warm);
+      border: 1px solid var(--clr-warm-border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+    }
+
+    .warm-card strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .warm-card p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* ── Steps (what you'll do) ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 24px;
+      position: relative;
+    }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 28px;
+    }
+
+    .step:last-child { padding-bottom: 0; }
+
+    .step-marker {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--clr-accent-soft);
+      color: var(--clr-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step:not(:last-child) .step-marker::after {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: calc(100% + 28px - 36px);
+      background: var(--clr-border);
+    }
+
+    .step-content h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .step-content p {
+      color: var(--clr-muted);
+      font-size: 0.92rem;
+      margin: 0;
+    }
+
+    /* ── Quick facts grid ── */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .fact-item {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .fact-item .fact-value {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--clr-accent);
+      margin-bottom: 4px;
+    }
+
+    .fact-item .fact-label {
+      font-size: 0.85rem;
+      color: var(--clr-muted);
+    }
+
+    /* ── Eligibility list ── */
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+    }
+
+    .check-list li {
+      padding: 8px 0;
+      padding-left: 28px;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .check-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--clr-accent);
+      font-weight: 700;
+    }
+
+    /* ── Sign-up section ── */
+    .signup-section {
+      background: var(--clr-accent-soft);
+      border-radius: var(--radius);
+      padding: 40px 28px;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .signup-section h2 {
+      margin-bottom: 12px;
+    }
+
+    .signup-section p {
+      color: var(--clr-muted);
+      max-width: 480px;
+      margin: 0 auto 24px;
+    }
+
+    .signup-btn {
+      display: inline-block;
+      background: var(--clr-accent);
+      color: #fff;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 15px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .signup-btn:hover {
+      background: var(--clr-accent-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ── Data protection ── */
+    .data-section p,
+    .data-section li {
+      font-size: 0.92rem;
+      color: var(--clr-muted);
+    }
+
+    .data-section ul {
+      padding-left: 20px;
+      margin: 8px 0 16px;
+    }
+
+    .data-section li {
+      margin-bottom: 4px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 0.85rem;
+      color: var(--clr-muted);
+      border-top: 1px solid var(--clr-border);
+    }
+
+    footer a {
+      color: var(--clr-accent);
+      text-decoration: none;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-top: 24px;
+    }
+
+    .contact-card p {
+      margin: 0;
+      font-size: 0.92rem;
+    }
+
+    .contact-card a {
+      color: var(--clr-accent);
+      text-decoration: none;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .hero { padding: 56px 20px 48px; }
+      .section { padding: 40px 20px; }
+      .facts-grid { grid-template-columns: 1fr 1fr; }
+      .signup-section { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══ -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Ludwig Boltzmann Institute for Digital Health and Prevention</div>
+      <h1>Want to get more active?<br>Let AI help you plan it.</h1>
+      <p>Co-create your own personalised 4-week physical activity plan with an AI system — and take it home with you.</p>
+      <a href="#signup" class="hero-cta">Book your session</a>
+    </div>
+  </div>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav-bar">
+    <div class="nav-inner">
+      <a href="#about">About</a>
+      <a href="#process">What You'll Do</a>
+      <a href="#eligibility">Eligibility</a>
+      <a href="#signup">Sign Up</a>
+      <a href="#data-protection">Data Protection</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ══ ABOUT ══ -->
+  <section class="section" id="about">
+    <h2>About the Study</h2>
+    <p class="lead">We're investigating how people experience co-creating a physical activity plan with an AI system.</p>
+    <p>In this study, you'll sit down with a researcher and work through a guided planning session with an AI chatbot. You won't just get a generic workout table — the session is designed to help you think through your goals, find activities that match your life, plan for disruptions, and consider how to actually stick with it.</p>
+
+    <div class="highlight-card">
+      <strong>What's in it for you?</strong>
+      <p>You'll leave with a personalised 4-week activity plan that you co-created — plus a €20 Salzburg Altstadt voucher as a thank-you for your time.</p>
+    </div>
+
+    <div class="facts-grid">
+      <div class="fact-item">
+        <div class="fact-value">~90 min</div>
+        <div class="fact-label">Session duration</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-value">€20</div>
+        <div class="fact-label">Altstadt voucher</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-value">1 session</div>
+        <div class="fact-label">Single visit, in person</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROCESS ══ -->
+  <section class="section" id="process">
+    <h2>What You'll Do</h2>
+    <p class="lead">The session takes place in our lab and is guided by a researcher throughout.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-marker">1</div>
+        <div class="step-content">
+          <h3>A few questions about you</h3>
+          <p>Short questionnaires covering basic demographics, your current activity level, and a personality questionnaire.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-marker">2</div>
+        <div class="step-content">
+          <h3>Warm-up conversation</h3>
+          <p>A casual chat with the AI about an everyday topic to help you get comfortable with the interface and the think-aloud method.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-marker">3</div>
+        <div class="step-content">
+          <h3>Co-create your plan</h3>
+          <p>The main session: you'll chat with the AI to build a 4-week physical activity plan step by step — defining goals, choosing activities, swapping what doesn't fit, planning for disruptions, and more.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-marker">4</div>
+        <div class="step-content">
+          <h3>Post-session questionnaires</h3>
+          <p>A short set of questions about your experience with the AI system and the plan you created.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-marker">5</div>
+        <div class="step-content">
+          <h3>Brief interview</h3>
+          <p>A short conversation with the researcher about how the interaction felt and your thoughts on the process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ELIGIBILITY ══ -->
+  <section class="section" id="eligibility">
+    <h2>Who Can Participate?</h2>
+    <p class="lead">We're looking for adults who can communicate comfortably in English.</p>
+
+    <ul class="check-list">
+      <li>You are 18 years of age or older</li>
+      <li>You are fluent in English (B2 level or above)</li>
+      <li>You can visit our lab in Salzburg for a single 90-minute session</li>
+    </ul>
+
+    <div class="warm-card">
+      <strong>Compensation</strong>
+      <p>Every participant receives a €20 Salzburg Altstadt voucher at the end of the session. Participation is voluntary, and you may withdraw at any time without consequence.</p>
+    </div>
+  </section>
+
+  <!-- ══ SIGN-UP ══ -->
+  <section class="section" id="signup">
+    <div class="signup-section">
+      <h2>Interested?</h2>
+      <p>Spots are limited. Book a session directly — pick a time slot that works for you.</p>
+      <!-- ── Replace href with your actual Microsoft Bookings URL ── -->
+      <a href="#REPLACE_WITH_MICROSOFT_BOOKINGS_URL" class="signup-btn" target="_blank" rel="noopener">Book your session</a>
+    </div>
+  </section>
+
+  <!-- ══ DATA PROTECTION ══ -->
+  <section class="section data-section" id="data-protection">
+    <h2>Data Protection</h2>
+    <p class="lead">Your privacy matters. Here's how we handle your data.</p>
+
+    <div class="card">
+      <h3>What data do we collect?</h3>
+      <p>During the study session we collect questionnaire responses, chat logs from your interaction with the AI system, think-aloud audio recordings, and interview audio. All data is linked to a random participant ID — not to your name or contact details.</p>
+    </div>
+
+    <div class="card">
+      <h3>How is the data stored?</h3>
+      <p>Research data is stored on institution-managed local infrastructure at the Ludwig Boltzmann Institute. No personally identifiable information is stored alongside your research data. Anonymised data may be released open-access upon publication of our results.</p>
+    </div>
+
+    <div class="card">
+      <h3>Your rights</h3>
+      <p>The study complies with the GDPR and the EU AI Act. You have the right to access, rectify, or request erasure of your data at any time. Participation is voluntary, and you may withdraw during or after the session without giving a reason.</p>
+    </div>
+
+    <div class="card">
+      <h3>This website</h3>
+      <p>This website is hosted on GitHub Pages. It does not use cookies, analytics, or tracking of any kind. The sign-up form is the only place where you provide personal information (name and email to schedule your session).</p>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <section class="section" id="contact">
+    <h2>Questions?</h2>
+    <p class="lead">Feel free to reach out if you'd like to know more before signing up.</p>
+    <div class="contact-card">
+      <!-- ── Replace with actual contact details ── -->
+      <p><strong>Study team</strong></p>
+      <p>Ludwig Boltzmann Institute for Digital Health and Prevention</p>
+      <p>Email: <a href="mailto:REPLACE@lbi-dhp.at">REPLACE@lbi-dhp.at</a></p>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <p>&copy; 2026 Ludwig Boltzmann Institute for Digital Health and Prevention · <a href="#data-protection">Data Protection</a></p>
+  </footer>
+
+</body>
+</html>
